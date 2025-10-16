@@ -21,6 +21,10 @@ if not GITHUB_TOKEN:
 
 GITHUB_API_URL = "https://api.github.com"
 
+# Authentication credentials
+AUTHORIZED_EMAIL = "24f3001532@ds.study.iitm.ac.in"
+AUTHORIZED_SECRET = "Man7"
+
 # Request Models
 class BuildRequest(BaseModel):
     email: EmailStr = Field(..., description="Valid email address for authentication")
@@ -71,12 +75,10 @@ class ReviseResponse(BaseModel):
 # Helper function to validate authentication
 def validate_auth(email: str, secret: str) -> bool:
     """
-    Validate email and secret.
-    In production, this would check against a database.
-    For now, basic validation (email format already validated by EmailStr).
+    Validate email and secret against authorized credentials.
+    Only the authorized email and secret are accepted.
     """
-    # Simple validation - in production, check against database
-    return len(secret) >= 8 and '@' in email
+    return email == AUTHORIZED_EMAIL and secret == AUTHORIZED_SECRET
 
 # GitHub API helper functions
 def create_github_repo(repo_name: str, username: str) -> dict:
