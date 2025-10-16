@@ -23,7 +23,7 @@ GITHUB_API_URL = "https://api.github.com"
 
 # Authentication credentials
 AUTHORIZED_EMAIL = "24f3001532@ds.study.iitm.ac.in"
-AUTHORIZED_SECRET = "Man7"
+AUTHORIZED_SECRET = "Manthan7"
 
 # Request Models
 class BuildRequest(BaseModel):
